@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .animation {
+        animation: fade-up 0.2s ease-out;
+      }
+      @keyframes fade-up {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let i = 1;
+        const intervalId = setInterval(() => {
+          if (i <= 6) {
+            const newElement = document.createElement(`h${i}`);
+            newElement.className = "animation";
+            newElement.textContent = `Heading ${i}`;
+            document.body.appendChild(newElement);
+            i++;
+          } else {
+            clearInterval(intervalId);
+          }
+        }, 300);
+      });
+    </script>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Pretendard Variable", Pretendard, -apple-system,
+          BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+          "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        color: var(--text);
+      }
+      :root[data-theme="light"] {
+        --color-primary: #ff5121;
+        --background: #fff;
+        --text: #000;
+        --border: #000;
+        --input-back: #000;
+        --input-text: #fff;
+      }
+      :root[data-theme="dark"] {
+        --color-primary: #ff5121;
+        --background: #000;
+        --text: #fff;
+        --border: #fff;
+        --input-back: #000;
+        --input-text: #fff;
+      }
+      body {
+        background-color: var(--background);
+      }
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+      }
+      input {
+        width: 100px;
+        height: 100px;
+        min-width: 100px;
+        min-height: 100px;
+        text-align: center;
+        font-size: 50px;
+        padding: 0.3rem;
+        border-radius: 1rem;
+        border: 1px solid var(--border);
+        background-color: var(--input-back);
+        color: var(--input-text);
+        font-weight: bold;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+      .clacText {
+        font-size: 60px;
+        margin: 1rem;
+        color: var(--text);
+      }
+      .ans {
+        font-size: 50px;
+        color: var(--color-primary);
+        font-weight: bold;
+      }
+    </style>
+    <script>
+      document.documentElement.setAttribute("data-theme", "dark");
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const num1 = document.querySelector("#num1");
+        const num2 = document.querySelector("#num2");
+        const ans = document.querySelector(".ans");
+
+        num1.addEventListener("input", () => {
+          num1.style.width = num1.value.length + "ch";
+          ans.textContent = Number(num1.value) + Number(num2.value);
+        });
+
+        num2.addEventListener("input", () => {
+          num2.style.width = num2.value.length + "ch";
+          ans.textContent = Number(num1.value) + Number(num2.value);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1 style="position: fixed; margin: 1rem">덧셈 계산기</h1>
+    <div class="main">
+      <input type="number" id="num1" />
+      <h1 class="clacText">+</h1>
+      <input type="number" id="num2" />
+      <h1 class="clacText">=</h1>
+      <h1 class="ans"></h1>
+    </div>
+  </body>
+</html>

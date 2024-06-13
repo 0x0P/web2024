@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>온도 변환기</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f5f5f5;
+      }
+      .container {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+      }
+      button {
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #result {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>온도 변환기</h2>
+
+      <label for="temperature">온도 입력:</label>
+      <input type="text" id="temperature" placeholder="예: 30C 또는 86F" />
+      <br />
+
+      <button onclick="convertTemperature()">변환</button>
+
+      <p id="result"></p>
+    </div>
+    <script>
+      function convertTemperature() {
+        var tempInput = document.getElementById("temperature").value.trim();
+        var resultText = "";
+
+        if (tempInput.toUpperCase().endsWith("C")) {
+          var celsius = parseFloat(tempInput);
+          var fahrenheit = (celsius * 9) / 5 + 32;
+          resultText = `${celsius}°C는 ${fahrenheit.toFixed(2)}°F 입니다.`;
+        }
+        else if (tempInput.toUpperCase().endsWith("F")) {
+          var fahrenheit = parseFloat(tempInput);
+          var celsius = ((fahrenheit - 32) * 5) / 9;
+          resultText = `${fahrenheit}°F는 ${celsius.toFixed(2)}°C 입니다.`;
+        } else {
+          resultText = "올바른 온도 형식을 입력해주세요. 예: 30C 또는 86F";
+        }
+
+        document.getElementById("result").innerHTML = resultText;
+      }
+    </script>
+  </body>
+</html>
