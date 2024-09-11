@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지뢰찾기</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="minesweeper-container">
+      <div class="header">
+        <span class="info">지뢰: <span id="mines-count">10개</span></span>
+        <button class="button" onclick="resetGame()">Reset</button>
+        <span class="info">Time: <span id="timer">0</span>s</span>
+      </div>
+      <div class="minesweeper" id="minesweeper"></div>
+    </div>
+  </body>
+</html>
